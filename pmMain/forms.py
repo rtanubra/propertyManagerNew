@@ -10,11 +10,6 @@ class DateInput(forms.DateInput):
 class EarningsModelForm(forms.ModelForm):
 
     class Meta:
-        rooms = Room_Info.objects.all()
-        ROOMCHOICES = []
-        for room in rooms:
-            if room.active_room == True:
-                ROOMCHOICES.append((room,room.room_no))
         model=Earnings
         widgets={
             'date':DateInput()
