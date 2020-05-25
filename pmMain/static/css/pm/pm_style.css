@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat');
+
+/* 
+background-color: #E0E0E0;
+*/
+/* General */
+html {
+    font-family: 'Montserrat';
+    background-color: #E0E0E0;
+}
+.bold {
+    font-weight: bold; 
+}
+h1,h6{
+    font-weight:bold;
+}
+h2{
+    font-weight:bold;
+    text-align:center;
+}
+.row{
+    margin:0 !important;
+}
+.hide-logout{
+    display:none;
+}
+
+@media(max-width:992px){
+    .section-stats h1 {
+    font-size: calc(16px+6vw);
+
+    }
+}
+/* Login */
+.login-info{
+    border: 1px solid black;
+    padding: 20px;
+}
+.login-header{
+    color:#ee6e73;
+}
+/* Summary Views*/
+@media (max-width: 420px) {                  
+   .small-hidden {
+      display: none;
+   }
+}
+.title-table{
+    color:green;
+    font-size:120%;
+}
+
+/* Earnings Summary */
+@media (max-width: 420px) {                  
+   .small-hidden {
+      display: none;
+   }
+   .earningsz:nth-child(2){
+       display: none;
+    } 
+    .earningsz:nth-child(3){
+       display: none;
+    } 
+}

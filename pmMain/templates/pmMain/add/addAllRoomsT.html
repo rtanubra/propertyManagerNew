@@ -1,0 +1,14 @@
+{% extends 'pmMain/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <h2>Charge all Active Rooms Rent</h2>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form}}
+        <br>
+        <button class='btn' type='submit' >Charge All</button>
+    </form>
+</div>
+{% endblock %}

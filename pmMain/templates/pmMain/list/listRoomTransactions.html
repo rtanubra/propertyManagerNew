@@ -1,0 +1,83 @@
+{% extends 'pmMain/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Room Transactions List</h2>
+    <section class="section section-buttons">
+        <div class="row">
+            <a href='/add/roomt'><button class="btn waves-effect"><i class="material-icons white-text left">add_circle</i>Add Transactions</button></a>
+        </div>
+        <br>
+        <div class="row">
+            <a href ='/roomst' ><button class="btn waves-effect ">Rooms Transactions Summary</button></a>
+        </div>
+    </section>
+    <section class="section section-details">
+        <ul class="z-depth-1">
+            <li>
+                <div class="card-panel z-depth-0 item-list">
+                    <div class="row title-row">
+                        <div class="col s2 m2 l2">
+                            <span class="title-table bold">Edit</span>
+                        </div>
+                        <div class="col s3 m2 l2">
+                            <span class="title-table bold">Month</span>
+                        </div>
+
+                        <div class="col s3 m2 l2 ">
+                            <span class="title-table bold">Name</span>
+                        </div>
+
+                        <div class="col s4 m2 l2 small-hidden">
+                            <span class="title-table bold">Date</span>
+                        </div>
+
+                        <div class="col s4 m2 l2 small-hidden">
+                            <span class="title-table bold">Comment</span>
+                        </div>
+
+                        <div class="col s4 m2 l2">
+                            <span class="title-table bold">Room Number</span>
+                        </div>
+
+                    </div> 
+                </div>
+            </li>
+            <!-- placeholder-->
+            {% for rt in room_transactions %}
+            <li>
+                <div class="card-panel z-depth-0 item-list" >
+                    <div class="row body-row">
+                        <div class="col s2 m2 l2">
+                            <span class="title-table bold"><a href='/roomt/{{rt.id}}'><i class="far fa-edit"></i></a><span>/<a href='/roomt/delete/{{rt.id}}'> <i class="far fa-trash-alt"></i></a></span></span>
+                        </div>
+                        <div class="col s3 m2 l2">
+                            <span class="body-table bold">{{rt.month}}</span>
+                        </div>
+
+                        <div class="col s3 m2 l2 ">
+                            <span class="body-table bold">{{rt.name}}</span>
+                        </div>
+
+                        <div class="col s4 m2 l2 small-hidden">
+                            <span class="body-table bold">{{rt.date}}</span>
+                        </div>
+
+                        <div class="col s4 m2 l2 small-hidden">
+                            <span class="body-table bold">{{rt.comment}}</span>
+                        </div>
+
+                        <div class="col s4 m2 l2">
+                            <span class="body-table bold">{{rt.room_no}}</span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+
+            <!-- placeholder -->
+        </ul>
+    </section>
+</div>
+
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends 'pmMain/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Monthly Earnings Summary</h2>
+    <section class="section section-stats">
+        <div class="row">
+            <div class="col s6 m6 l3">
+                <div class="card-panel small-hidden">
+                    <h6 class=bold >Total Income</h6>
+                    <h7 class=bold >{{total_income}}</h7>
+                </div>
+            </div>
+            <div class="col s6 m6 l3">
+                <div class="card-panel small-hidden">
+                    <h6 class=bold >Total Expense</h6>
+                    <h7 class=bold >{{total_expense}}</h7>
+                </div>
+            </div>
+
+            <div class="col s6 m6 l3">
+                <div class="card-panel">
+                    <h6 class=bold >Current Rerserve</h6>
+                    <h7 class=bold >{{total_reserve}}</h7>
+                </div>
+            </div>
+
+            <div class="col s6 m6 l3">
+                <div class="card-panel">
+                    <h6 class=bold >Total Profit</h6>
+                    <h7 class=bold >{{after_reserve}}</h7>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section class="section section-buttons">
+        <div class="row">
+            <a href ='/add/earnings' ><button class="btn waves-effect "><i class="material-icons white-text left">add_circle</i>Add Revenue</button></a>
+            <a href ='/add/expenses'><button class="btn waves-effect "><i class="material-icons white-text left">add_circle</i>Add Expense</button></a>
+        </div>
+        <br>
+        <div class="row">
+            <a href ='/earnings/list' ><button class="btn waves-effect ">List Revenue items</button></a>
+            <a href ='/expenses/list' ><button class="btn waves-effect ">List Expense items</button></a>
+        </div>
+    </section>
+    <section class="section section-details">
+        <ul class="z-depth-1">
+            <li>
+                <div class="card-panel z-depth-0 item-list">
+                    <div class="row title-row">
+
+                        <div class="col s4 m2 l2">
+                            <span class="title-table bold">Month</span>
+                        </div>
+
+                        <div class="col s4 m2 l2 small-hidden">
+                            <span class="title-table bold">Revenue</span>
+                        </div>
+
+                        <div class="col s4 m2 l2 small-hidden">
+                            <span class="title-table bold">Expense</span>
+                        </div>
+
+                        <div class="col s4 m2 l2">
+                            <span class="title-table bold">Reserve</span>
+                        </div>
+
+                        <div class="col s4 m2 l2">
+                            <span class="title-table bold">Final</span>
+                        </div>
+
+                    </div> 
+                </div>
+            </li>
+            <!-- placeholder-->
+            {% for m in monthly_summary_list %}
+            <li>
+                <div class="card-panel z-depth-0 item-list" >
+                    <div class="row body-row">
+                        {% for item in m %}
+                        <div class="col s4 m2 l2 earningsz">
+                            <span class="body-table bold">{{item}}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+
+            <!-- placeholder -->
+        </ul>
+    </section>
+</div>
+{% endblock %}

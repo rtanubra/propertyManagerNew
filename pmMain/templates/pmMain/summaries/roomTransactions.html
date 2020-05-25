@@ -1,0 +1,62 @@
+{% extends 'pmMain/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Room Transactions Summary</h2>
+    <section class="section section-stats">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="card-panel">
+                    <h6 class=bold >Rooms Summary</h6>
+                    <h7 class=bold >{{room_total}}</h7>
+                </div>   
+            </div>
+        </div>
+    </section>
+    <section class="section section-buttons">
+        <div class="row">
+            <a href='/add/roomt'><button class="btn waves-effect"><i class="material-icons white-text left">add_circle</i>Add Transactions</button></a>
+            <a href='/add/all-rent/roomt'><button class="btn waves-effect"><i class="material-icons white-text left">add_circle</i>Charge All tenants monthly Rent</button></a>
+        </div>
+        <br>
+        <div class="row">
+            <a href ='/roomst/list' ><button class="btn waves-effect ">List Room Transaction items</button></a>
+        </div>
+    </section>
+    <section class="section section-details">
+        <ul class="z-depth-1">
+            <li>
+                <div class="card-panel z-depth-0 item-list">
+                    <div class="row title-row">
+                        <div class="col s6 m6 l6">
+                            <span class="title-table bold">Room</span>
+                        </div>
+                        <div class="col s6 m6 l6">
+                            <span class="title-table bold">Net Credit</span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            {% for r in room_totals %}
+                <li>
+                    <div class="card-panel z-depth-0 item-list">
+                        <div class="row body-row">
+                            {% for i in r %}
+                                <div class="col s6 m6 l6">
+                                    <span class="body-table bold">
+                                        {{i}}
+                                    </span>
+                                </div>
+                                        
+                            {% endfor %}
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+ 
+        </ul>
+    </section>
+</div>
+
+{% endblock %}

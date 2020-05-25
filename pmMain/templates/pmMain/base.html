@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Project Manager</title>
+    
+    <!--This below are grabbed from Materialize css -->
+    <!-- Compiled and minified CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel='stylesheet' type="text/css"  href ="{% static 'css/pm/pm_style.css' %}" >
+    <!--FA icons -->
+    <script src="https://kit.fontawesome.com/afe78721d8.js" crossorigin="anonymous"></script>
+    
+</head>
+<body>
+     <nav>
+        <div class="nav-wrapper">
+        <a href="" class="brand-logo">My PM</a>
+        <a href="" data-target="mobile-burger" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a id='logout' href="/logout/">Logout</a></li>
+            <li><a href="/earnings">Earnings</a></li>
+            <li><a href="/reserve">Reserves</a></li>
+            <li><a href="/roomst">Rooms Trans</a></li>
+            <li><a href="/roomsi">Rooms Info</a></li>
+        </ul>
+        <ul class="sidenav" id="mobile-burger">
+            <li id='mobile-logout' ><a href="/logout/">Logout</a></li>
+            <li><a href="/earnings">Earnings</a></li>
+            <li><a href="/reserve">Reserves</a></li>
+            <li><a href="/roomst">Rooms Trans</a></li>
+            <li><a href="/roomsi">Rooms Info</a></li>
+        </ul>
+        </div>
+    </nav>
+    <!--JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!--Project Scripts-->
+    <script src='{% static "js/pm/pm_script.js" %}'></script>
+    {% block content %}
+
+    {% endblock %}
+    
+    
+    
+    
+</body>
+</html>

@@ -1,0 +1,27 @@
+{% extends 'pmMain/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <h2>You Have successfully logged out</h2>
+    <div class="login-info">
+        <h3 class='login-header' >Accounts tracked</h3>
+        <ul class="browser-default">
+            <li class="collection-item">Earnings (Revenue and Expenses) - Tracks money movement in and out of your clearing account.</li>
+            <li class="collection-item" >Reserves -Tracks money in and out of your reserve account.</li>
+            <li class="collection-item">Room Transactions - Tracks individual accounts credit or debit acrued per person.</li>
+        </ul>
+        <h3 class="login-header" >Authentication Required</h3>
+        <p>All Activity inside of this application requires users to be logged in and authenticated.
+            You are currently logged out, click to navigate to any screen to be prompted to login.
+        </p>
+        <h3 class="login-header" >New User Requests</h3>
+        <p>Due to the sensitive nature of the infomarmation contained in this applicatiom, registration for this application is restricted. Please email administrator to 
+            request a login. He can also build you your own customizable application!
+        </p>
+    </div>
+    <br>
+
+</div>
+<script src='{% static "js/pm/pm_loggedOut.js" %}'></script>
+{% endblock %}

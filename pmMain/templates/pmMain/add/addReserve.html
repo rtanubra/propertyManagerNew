@@ -1,0 +1,16 @@
+{% extends 'pmMain/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <h2>Add Reserve</h2>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form}}
+
+        <br>
+        <button class='btn' type='submit' >Save Reserve</button>
+    </form>
+</div>
+
+{% endblock %}

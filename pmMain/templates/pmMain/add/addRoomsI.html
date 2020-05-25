@@ -1,0 +1,23 @@
+{% extends 'pmMain/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <h2>Add Room Information</h2>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form}}
+        <label>
+            <input id='id_active_r' name='id_active_r' type="checkbox" checked="checked" />
+            <span>Active_room</span>
+      </label>
+      <br>
+      <br>
+        <button class='btn' type='submit' >Save Transaction</button>
+
+    </form>
+</div>
+
+
+<script src='{% static "js/pm/pm_roomI_script.js" %}' ></script>
+{% endblock %}

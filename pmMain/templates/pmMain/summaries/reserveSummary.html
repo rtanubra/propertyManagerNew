@@ -1,0 +1,109 @@
+{% extends 'pmMain/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Monthly Reserve Summary</h2>
+    <section class="section section-stats">
+        <div class="row">
+
+            <div class="col s6 m6 l4">
+                <div class="card-panel small-hidden">
+                    <h6 class=bold >Reserve In</h6>
+                    <h7 class=bold >{{resIn}}</h7>
+                </div>   
+            </div>
+
+            <div class="col s6 m6 l4">
+                <div class="card-panel small-hidden">
+                    <h6 class=bold >Reserve Out</h6>
+                    <h7 class=bold >{{resOut}}</h7>
+                </div>   
+            </div>
+
+            <div class="col s12 m12 l4">
+                <div class="card-panel">
+                    <h6 class=bold >Reserve Net</h6>
+                    <h7 class=bold >{{resNet}}</h7>
+                </div>   
+            </div>
+
+        </div>
+        
+    </section>
+    <section class="section section-buttons">
+        <div class="row">
+            <a href='/add/reserve'><button class="btn waves-effect"><i class="material-icons white-text left">add_circle</i>Add Reserve Transaction</button></a>
+        </div>
+    </section>
+    <section class="section section-details">
+        <ul class="z-depth-1">
+            <li>
+                <div class="card-panel z-depth-0 item-list">
+                    <div class="row title-row">
+                        <div class="col s2 m1 l1">
+                            <span class="title-table bold">Edit</span>
+                        </div>
+                        <div class="col s3 m2 l2">
+                            <span class="title-table bold">Month</span>
+                        </div>
+
+                        <div class="col s3 m2 l2">
+                            <span class="title-table bold">In/Out</span>
+                        </div>
+
+                        <div class="col s4 m2 l2 small-hidden">
+                            <span class="title-table bold">Date</span>
+                        </div>
+
+                        <div class="col s4 m2 l2">
+                            <span class="title-table bold">Amount</span>
+                        </div>
+
+                        <div class="col s4 m3 l3 small-hidden">
+                            <span class="title-table bold">Comment <span>ID</span></span>
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+
+            <!-- Placeholder iterate -->
+            {% for res in reserves %}
+            <li>
+                <div class="card-panel z-depth-0 item-list">
+                    <div class="row body-row">
+                        <div class="col s2 m1 l1">
+                            <span class="title-table bold"><a href='/reserve/{{res.id}}'><i class="far fa-edit"></i></a><span>/<a href='/reserve/delete/{{res.id}}'> <i class="far fa-trash-alt"></i></a></span></span>
+                        </div>
+                        <div class="col s3 m2 l2">
+                            <span class="body-table bold">{{res.month}}</span>
+                        </div>
+
+                        <div class="col s3 m2 l2">
+                            <span class="body-table bold">{{res.direction}}</span>
+                        </div>
+
+                        <div class="col s4 m2 l2 small-hidden">
+                            <span class="body-table bold">{{res.date}}</span>
+                        </div>
+
+                        <div class="col s4 m2 l2 ">
+                            <span class="body-table bold">{{res.amount}}</span>
+                        </div>
+
+                        <div class="col s4 m3 l3 small-hidden">
+                            <span class="body-table bold">{{res.comment}}</span>
+                        </div>
+
+                    </div> 
+                </div>
+            </li>
+            {% endfor %}
+            
+            <!-- Placeholder iterate -->
+
+        </ul>
+    </section>
+    
+</div>
+{% endblock %}

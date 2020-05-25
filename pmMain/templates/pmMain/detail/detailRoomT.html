@@ -1,0 +1,13 @@
+{% extends 'pmMain/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <h2>Update Room Transaction Information</h2>
+    <form method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <button class='btn' type='submit' >Save Transaction</button>
+    </form>
+</div>
+<script src='{% static "js/pm/pm_roomI_script.js" %}' ></script>
+{% endblock %}

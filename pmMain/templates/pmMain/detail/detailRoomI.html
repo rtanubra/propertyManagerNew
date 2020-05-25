@@ -1,0 +1,19 @@
+{% extends 'pmMain/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <h2>Update Tenant Information</h2>
+    <form method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <label>
+            <input id='id_active_r' name='id_active_r' type="checkbox" checked="checked" />
+            <span>Active_room</span>
+      </label>
+      <br>
+      <br>
+        <button class='btn' type='submit' >Save Tenant</button>
+    </form>
+</div>
+<script src='{% static "js/pm/pm_roomI_script.js" %}' ></script>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'pmMain/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    
+    <h2>Delete Reserve  </h2>
+    <form action='' method='POST'>
+        {% csrf_token %}
+        <h3>{{object.name}}</h3>
+        <section class="section section-buttons">
+            <div class="row">
+                <button type='submit' class="btn waves-light red">Confirm Delete</button>
+            </div>
+        </section>
+        <section class="section section-detail">
+            <p>Amount- {{object.amount}}</p>
+            <p>Direction - {{object.direction}}</p>
+            <p>Comment - {{object.comment}}</p>
+        </section>
+    <form>
+    <div class="row">
+        <a href='/reserve' class="btn waves-effect" >Back to Reserve Summary</a>
+    </div>
+    
+</div>
+
+{% endblock %}
