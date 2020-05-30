@@ -1,0 +1,70 @@
+{% extends 'pmMain/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <h2>Download Info</h2>
+    <section class="section section-details">
+        <ul class="z-depth-1">
+            <li>
+                <div class="card-panel z-depth-0 item-list">
+                    <div class="row title-row">
+
+                        <div class="col s12 m12 l12">
+                            <a  href='{% static "csv/pm/earnings.csv" %}' download> Download Earnings </a>
+                        </div>
+
+                    </div> 
+                </div>
+            </li>
+            <li>
+                <div class="card-panel z-depth-0 item-list">
+                    <div class="row title-row">
+
+                        <div class="col s12 m12 l12">
+                            <a  href='{% static "csv/pm/expenses.csv" %}' download> Download Expenses </a>
+                        </div>
+
+                    </div> 
+                </div>
+            </li>
+            <li>
+                <div class="card-panel z-depth-0 item-list">
+                    <div class="row title-row">
+
+                        <div class="col s12 m12 l12">
+                            <a  href='{% static "csv/pm/rooms_info.csv" %}' download> Download Tenants </a>
+                        </div>
+
+                    </div> 
+                </div>
+            </li>
+            <li>
+                <div class="card-panel z-depth-0 item-list">
+                    <div class="row title-row">
+
+                        <div class="col s12 m12 l12">
+                            <a  href='{% static "csv/pm/reserves.csv" %}' download> Download Reserves </a>
+                        </div>
+
+                    </div> 
+                </div>
+            </li>
+            <li>
+                <div class="card-panel z-depth-0 item-list">
+                    <div class="row title-row">
+
+                        <div class="col s12 m12 l12">
+                            <a  href='{% static "csv/pm/rooms_transactions.csv" %}' download> Download Room Transactions </a>
+                        </div>
+
+                    </div> 
+                </div>
+            </li>
+
+        </ul>
+    </section>
+
+</div>
+
+{% endblock %}

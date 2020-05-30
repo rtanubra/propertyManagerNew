@@ -26,7 +26,8 @@ from .forms import (
 from .utilities import(
     reserve_util,
     date_util,
-    earnings_util
+    earnings_util,
+    csv_util
 )
 
 # Create your views here.
@@ -370,5 +371,21 @@ class ReserveCreateView(LoginRequiredMixin,CreateView):
 
     def get_success_url(self):
         return '/reserve'
+
+def download(request):
+    #load csv files.
+    reserves = Reserve.objects.all()
+    rooms = Room_Info.objects.all()                                                                                                             
+    expenses = Expenses.objects.all()
+    earnings = Earnings.objects.all()
+    room_ts =Room_Transactions.objects.all()
+   
+    csv_util.csv_reserve_info(reserves)                                                                                                                  
+    csv_util.csv_expenses(expenses)
+    csv_util.csv_earnings(earnings)
+    csv_util.csv_rooms_info(rooms)
+    csv_util.csv_rooms_transactions(room_ts)
+
+    return render(request, 'pmMain/files/download.html')
 
     

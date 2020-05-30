@@ -1,5 +1,6 @@
 specific
 csv_file_dump/
+pmMain/static/csv/
 *seed/
 
 

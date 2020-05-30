@@ -8,6 +8,7 @@ from . import views
 
 urlpatterns = [
     path('',views.earningsSummary,name="earningsSummary"),
+    path('downloads',views.download,name="downloads"),
     path('earnings',views.earningsSummary,name="earningsSummary"),
     path('earning/<int:pk>',views.EaerningsUpdate.as_view(),name='earningsUpdate'),
     path('earnings/list',views.earningsList,name="earningsList"),

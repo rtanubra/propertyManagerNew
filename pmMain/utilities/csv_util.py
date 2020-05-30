@@ -3,7 +3,8 @@ import os
 import csv
 
 
-output_path = os.getcwd()+'/csv_file_dump/'
+#output_path = os.getcwd()+'/csv_file_dump/'
+output_path = os.getcwd()+'/static/csv/pm/'
 
 def csv_rooms_transactions(transactions):
     fieldnames = [

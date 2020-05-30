@@ -1,0 +1,9 @@
+name,email,phone_no,room_no,phone_no,rent,key_deposit,last_month,active_room
+Expense Account,expense@gmail.com,416-720-0661,99,416-720-0661,1,1,1,True
+Jasmohit Singh,jasmohit005@gmail.com,226-961-5267,3,226-961-5267,375,0,375,True
+Mohamad Sulaiman,moe.3.2.1@hotmail.com,226-340-2997,2,226-340-2997,380,20,380,True
+Rehan Ali Mirza,mirzarehan.tr@gmail.com,226-280-6151,4,226-280-6151,400,30,400,True
+Drew Simmons,sdrew933@gmail.com,226-346-6507,5,226-346-6507,360,0,360,True
+Manpreet Kaur,mbenipal24@gmail.com,226-975-2350,6,226-975-2350,350,30,350,True
+Abdul-Muntakim Rafi,rafi11@uwindsor.ca,519-992-1610,7,519-992-1610,300,0,300,True
+Rey Tanubrata,rdtanubrata@gmail.com,416-720-0667,1,416-720-0667,380,30,380,True
