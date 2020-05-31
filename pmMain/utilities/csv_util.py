@@ -1,10 +1,12 @@
 #Used to pull data into an excel form
-import os 
+import glob,os 
 import csv
+import pandas as pd
+from pandas import DataFrame, ExcelWriter
 
 
 #output_path = os.getcwd()+'/csv_file_dump/'
-output_path = os.getcwd()+'/static/csv/pm/'
+output_path = os.getcwd()+'/pmMain/static/csv/pm/'
 
 def csv_rooms_transactions(transactions):
     fieldnames = [
@@ -28,6 +30,18 @@ def csv_rooms_transactions(transactions):
                 'room_no':rt.room_no,
                 'prop_name':rt.prop_name
             })
+
+def csv_everything():
+    writer = ExcelWriter(output_path+"/compiled.xlsx")
+    for filename in glob.glob(output_path+"/*.csv"):
+        df_csv = pd.read_csv(filename)
+
+        (_, f_name) = os.path.split(filename)
+        (f_shortname, _) = os.path.splitext(f_name)
+
+        df_csv.to_excel(writer, f_shortname, index=False)
+
+    writer.save()
 
 def csv_reserve_info(reserves):
     fieldnames = [
