@@ -3,13 +3,24 @@
 {% block content %}
 
 <div class="container">
-    <h2>Download Info</h2>
+    <h2>Analysis</h2>
+    <section class="hidden">
+        {{ earnings|json_script:"earnings" }}
+        {{ expenses|json_script:"expenses" }}
+        {{ reserve|json_script:"reserve" }}
+    </section>
+    <section class="charts">
+        <h3>Earnings,Expenses, Reserves Graphs</h3>
+        <canvas id="myChart"></canvas>
+        <canvas id="myChart1"></canvas>
+    </section>
     <section class="section section-details">
+        <h3>Downloadable Reports</h3>
         <ul class="z-depth-1">
             <li>
                 <div class="card-panel z-depth-0 item-list">
                     <div class="row title-row">
-
+                        
                         <div class="col s12 m12 l12">
                             <a  href='{% static "csv/pm/earnings.csv" %}' download> Download Earnings </a>
                         </div>
@@ -61,10 +72,121 @@
                     </div> 
                 </div>
             </li>
+            <li>
+                <div class="card-panel z-depth-0 item-list">
+                    <div class="row title-row">
+
+                        <div class="col s12 m12 l12">
+                            <a  href='{% static "csv/pm/compiled.xlsx" %}' download> Download Everything Excel </a>
+                        </div>
+
+                    </div>
+                </div>
+            </li>
 
         </ul>
     </section>
 
 </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+<script type="text/javascript">
+    var earnings = JSON.parse(document.getElementById('earnings').textContent);
+    var expenses = JSON.parse(document.getElementById('expenses').textContent);
+    var reserve =  JSON.parse(document.getElementById('reserve').textContent)
+
+    var labels= ['Jan','Feb','Mar','Apr','May', 'Jun', 'Jul','Aug','Sep','Oct','Nov','Dec']
+    var earns = [0,0,0,0,0,0,0,0,0,0,0,0]
+    var exps = [0,0,0,0,0,0,0,0,0,0,0,0]
+    var res = [0,0,0,0,0,0,0,0,0,0,0,0]
+    var netted = [0,0,0,0,0,0,0,0,0,0,0,0]
+
+    
+    
+
+    reserve.forEach(r=>{
+        currIndex = labels.indexOf(r['date'])
+        res[currIndex] += parseFloat(r.amount)
+        
+    })
+
+    earnings.forEach(e=>{
+        currIndex = labels.indexOf(e['date'])
+        earns[currIndex] += parseFloat(e.amount)
+        
+    })
+    expenses.forEach(e=>{
+        currIndex = labels.indexOf(e['date'])
+        exps[currIndex] += parseFloat(e.amount)
+    })
+    for (i = 0; i < netted.length; i++) {
+
+        netted[i] = earns[i]-exps[i]
+
+    }
+
+    
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'line',
+        // The data for our dataset
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Revenue By Month',
+                    borderColor: 'rgb(66,245,75)',
+                    data: earns
+                },
+                {
+                    label: 'Expenses By Month',
+                    borderColor: 'rgb(245, 78, 66)',
+                    data: exps
+                }
+            ]
+        },
+
+        // Configuration options go here
+        options: {
+            title:{
+                display:true,
+                text:'Revenue vs Expenses By Month'
+            }
+        }
+    });
+
+    var ctv = document.getElementById('myChart1').getContext('2d');
+    var chart = new Chart(ctv, {
+        // The type of chart we want to create
+        type: 'line',
+        // The data for our dataset
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Reserve By Month',
+                    borderColor: 'rgb(66,108,245)',
+                    data: res
+                },
+                {
+                    label: 'Net Earnings By Month',
+                    borderColor: 'rgb(238,130,238)',
+                    data: netted
+                }
+            ]
+        },
+
+        // Configuration options go here
+        options: {
+            title:{
+                display:true,
+                text:'Reserve vs Net Earnings By month'
+            }
+        }
+    });
+
+</script>
+
 
 {% endblock %}

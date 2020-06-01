@@ -4,7 +4,6 @@ from django.http import HttpResponseRedirect
 from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-
 from .models import (
     Owner,
     Prop_Name,
@@ -372,7 +371,9 @@ class ReserveCreateView(LoginRequiredMixin,CreateView):
     def get_success_url(self):
         return '/reserve'
 
-def download(request):
+def analysis(request):
+    if not request.user.is_authenticated:
+        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
     #load csv files.
     reserves = Reserve.objects.all()
     rooms = Room_Info.objects.all()                                                                                                             
@@ -385,7 +386,30 @@ def download(request):
     csv_util.csv_earnings(earnings)
     csv_util.csv_rooms_info(rooms)
     csv_util.csv_rooms_transactions(room_ts)
+    csv_util.csv_everything()
+                                                                                                    
+    expenses_j = list(Expenses.objects.values('amount','date'))
+    earnings_j = list(Earnings.objects.values('amount','date'))
+    reserve_j = list(Reserve.objects.values('amount','date','direction'))
+    
+    for e in earnings_j:
+        e['date'] = date_util.getMonthName(e['date'])
+        e['amount'] =  e['amount'] 
+    
+    for e in expenses_j:
+        e['date'] = date_util.getMonthName(e['date'])
+    
+    for r in reserve_j:
+        r['date'] = date_util.getMonthName(r['date'])
+        if r['direction'] == 'OUT':
+            r['amount'] = r['amount']*-1
 
-    return render(request, 'pmMain/files/download.html')
+    context = {
+       'expenses':expenses_j,
+       'earnings':earnings_j,
+       'reserve':reserve_j
+    }
+
+    return render(request, 'pmMain/files/download.html',context)
 
     
