@@ -135,12 +135,12 @@
             labels: labels,
             datasets: [
                 {
-                    label: 'Revenue By Month',
+                    label: 'Revenue',
                     borderColor: 'rgb(66,245,75)',
                     data: earns
                 },
                 {
-                    label: 'Expenses By Month',
+                    label: 'Expenses',
                     borderColor: 'rgb(245, 78, 66)',
                     data: exps
                 }
@@ -152,7 +152,11 @@
             title:{
                 display:true,
                 text:'Revenue vs Expenses By Month'
+            },
+            tooltips:{
+                mode:'x-axis'
             }
+
         }
     });
 
@@ -165,12 +169,12 @@
             labels: labels,
             datasets: [
                 {
-                    label: 'Reserve By Month',
+                    label: 'Net Reserve',
                     borderColor: 'rgb(66,108,245)',
                     data: res
                 },
                 {
-                    label: 'Net Earnings By Month',
+                    label: 'Net Earnings',
                     borderColor: 'rgb(238,130,238)',
                     data: netted
                 }
@@ -182,7 +186,10 @@
             title:{
                 display:true,
                 text:'Reserve vs Net Earnings By month'
-            }
+            },
+            tooltips:{
+                mode:'nearest'
+            },
         }
     });
 
